@@ -7,6 +7,8 @@ import { Model } from 'objection'
 
 import BaseModel from './base.model.js'
 
+import LicenceModel from './licence.model.js'
+import ReturnCycleModel from './return-cycle.model.js'
 import ReturnSubmissionModel from './return-submission.model.js'
 
 export default class ReturnLogModel extends BaseModel {
@@ -23,6 +25,22 @@ export default class ReturnLogModel extends BaseModel {
 
   static get relationMappings () {
     return {
+      licence: {
+        relation: Model.BelongsToOneRelation,
+        modelClass: LicenceModel,
+        join: {
+          from: 'returnLogs.licenceRef',
+          to: 'licences.licenceRef'
+        }
+      },
+      returnCycle: {
+        relation: Model.HasOneRelation,
+        modelClass: ReturnCycleModel,
+        join: {
+          from: 'returnLogs.returnCycleId',
+          to: 'returnCycles.id'
+        }
+      },
       returnSubmissions: {
         relation: Model.HasManyRelation,
         modelClass: ReturnSubmissionModel,
