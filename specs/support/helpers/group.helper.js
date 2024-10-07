@@ -1,5 +1,3 @@
-'use strict'
-
 /**
  * @module GroupHelper
  */
@@ -25,8 +23,8 @@ export const data = groups
  */
 export function select (index = -1) {
   if (index > -1) {
-    return Groups.data[index]
+    return groups[index]
   }
 
-  return selectRandomEntry(Groups.data)
+  return selectRandomEntry(groups)
 }

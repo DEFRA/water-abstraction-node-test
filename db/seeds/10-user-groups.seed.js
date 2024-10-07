@@ -1,7 +1,7 @@
 import { db } from '../db.js'
 import { data as groups } from './data/groups.js'
 import UserGroupModel from '../../app/models/user-group.model.js'
-import { data as  userGroups } from './data/user-groups.js'
+import { data as userGroups } from './data/user-groups.js'
 import { data as users } from './data/users.js'
 
 import ServerConfig from '../../config/server.config.js'

@@ -2,9 +2,8 @@
  * @module GaugingStationHelper
  */
 
-import { generateUUID } from '../../../app/lib/general.lib.js'
+import { generateUUID, timestampForPostgres } from '../../../app/lib/general.lib.js'
 import GaugingStationModel from '../../../app/models/gauging-station.model.js'
-import { timestampForPostgres } from '../../../app/lib/general.lib.js'
 
 /**
  * Add a new gauging-station entity

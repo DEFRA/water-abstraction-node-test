@@ -1,9 +1,9 @@
+import { clean, closeConnection } from '../specs/support/database.js'
+
 if (process.env.NODE_ENV !== 'test') {
   console.error('NODE_ENV is not set to test!')
   process.exit(1)
 }
-
-import { clean, closeConnection } from '../specs/support/database.js'
 
 // NOTE: We have to close the knex instance after execution to avoid Node process hanging due to open connections
 // https://knexjs.org/faq/recipes.html#node-instance-doesn-t-stop-after-using-knex

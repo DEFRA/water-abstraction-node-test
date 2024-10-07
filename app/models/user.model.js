@@ -3,7 +3,7 @@
  * @module UserModel
  */
 
-import Bcrypt from 'bcryptjs';
+import Bcrypt from 'bcryptjs'
 import { Model } from 'objection'
 
 import BaseModel from './base.model.js'
