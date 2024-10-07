@@ -10,7 +10,7 @@ module.exports = {
     }
   ],
   parserOptions: {
-    sourceType: 'script'
+    sourceType: 'module'
   },
   plugins: [
     '@stylistic/js',
