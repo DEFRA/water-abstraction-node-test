@@ -1,7 +1,7 @@
 {
-  "name": "water-abstraction-ava-spike",
+  "name": "water-abstraction-node-test",
   "version": "0.1.0",
-  "description": "Spike to investigate switching to the AVA testing framework",
+  "description": "Spike to investigate switching to the node test runner",
   "homepage": "https://github.com/DEFRA/water-abstraction-team",
   "main": "index.js",
   "scripts": {
@@ -16,14 +16,15 @@
     "rollback:test": "NODE_ENV=test knex migrate:rollback",
     "rollback:all": "knex migrate:rollback --all",
     "rollback:all:test": "NODE_ENV=test knex migrate:rollback --all",
-    "lint": "standard",
-    "pretest": "NODE_ENV=test node ./specs/support/setup.js",
+    "seed": "knex seed:run --knexfile knexfile.application.js",
+    "lint": "eslint .",
+    "pretest": "NODE_ENV=test node db/clean.js",
     "test": "node --test --experimental-test-coverage",
     "test:lcov": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info specs"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DEFRA/water-abstraction-system"
+    "url": "https://github.com/DEFRA/water-abstraction-node-test"
   },
   "author": "Water service team",
   "license": "OGL-UK-3.0",
@@ -31,6 +32,7 @@
   "dependencies": {
     "@hapi/boom": "^10.0.1",
     "@hapi/hapi": "^21.3.2",
+    "bcryptjs": "^2.4.3",
     "blipp": "^4.0.2",
     "dotenv": "^16.3.1",
     "hapi-pino": "^12.1.0",
@@ -40,7 +42,10 @@
     "pg-query-stream": "^4.5.2"
   },
   "devDependencies": {
+    "@stylistic/eslint-plugin-js": "^1.8.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-jsdoc": "^50.3.1",
     "pino-pretty": "^10.2.0",
-    "standard": "^17.1.0"
+    "standard": "^17.1.2"
   }
 }

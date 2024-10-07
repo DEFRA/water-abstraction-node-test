@@ -1,5 +1,5 @@
 /**
- * @module LineHelper
+ * @module ReturnSubmissionLineHelper
  */
 
 import { generateUUID } from '../../../app/lib/general.lib.js'
