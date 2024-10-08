@@ -15,6 +15,7 @@ jobs:
       POSTGRES_PORT: 5432
       POSTGRES_DB: wabs_node_test
       POSTGRES_DB_TEST: wabs_node_test
+      DEFAULT_USER_PASSWORD: P@55word
       ENVIRONMENT: dev
 
 
