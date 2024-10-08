@@ -15,6 +15,7 @@ jobs:
       POSTGRES_PORT: 5432
       POSTGRES_DB: wabs_node_test
       POSTGRES_DB_TEST: wabs_node_test
+      DEFAULT_USER_PASSWORD: P@55word
       ENVIRONMENT: dev
 
 
@@ -89,6 +90,7 @@ jobs:
       # https://community.sonarsource.com/t/code-coverage-doesnt-work-with-github-action/16747/7
       - name: Run unit tests
         run: |
+          npm run pretest
           npm run test:lcov
           sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' lcov.info
 
