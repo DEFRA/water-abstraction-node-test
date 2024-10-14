@@ -20,6 +20,7 @@
     "lint": "eslint .",
     "pretest": "NODE_ENV=test node db/clean.js",
     "test": "node --test --experimental-test-coverage",
+    "test:skip": "node --test --experimental-test-coverage",
     "test:lcov": "node --test --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=lcov.info specs"
   },
   "repository": {
