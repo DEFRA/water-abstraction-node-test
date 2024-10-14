@@ -28,8 +28,3 @@ export function select (index = -1) {
 
   return selectRandomEntry(changeReasons)
 }
-
-module.exports = {
-  data: changeReasons,
-  select
-}
