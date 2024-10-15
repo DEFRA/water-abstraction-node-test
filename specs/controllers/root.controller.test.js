@@ -5,7 +5,7 @@ import assert from 'node:assert/strict'
 // For running our service
 import { init } from '../../app/server.js'
 
-describe('Check Busy Bill Runs service', () => {
+describe('Root controller: GET /', () => {
   let options
   let server
 
