@@ -1,6 +1,6 @@
 # Water Abstraction Node Test
 
-![Build Status](https://github.com/DEFRA/water-abstraction-node-test/workflows/CI/badge.svg?branch=main)
+[![CI](https://github.com/DEFRA/water-abstraction-node-test/actions/workflows/ci.yml/badge.svg)](https://github.com/DEFRA/water-abstraction-node-test/actions/workflows/ci.yml)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_water-abstraction-node-test&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_water-abstraction-node-test)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_water-abstraction-node-test&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_water-abstraction-node-test)
 [![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/water-abstraction-node-test/badge.svg)](https://snyk.io/test/github/DEFRA/water-abstraction-node-test)
@@ -14,9 +14,21 @@ We as a team would love to move the [water-abstraction-system](https://github.co
 
 There's no 'right' way in development. But this feels a bit off to us. Hence our interest in **node test runner**. It is native to Node (no extra dependency), blazingly fast and one of few frameworks offering native ESM support without transpiling. If we switched to **node test runner**, we could claim our project as 100% ESM 🤗
 
+## Current status
+
+At this time **node-test** is looking to be a viable alternative to **Jest** and **Lab**. After migrating a file from **water-abstraction-system** to ESM, the test file we create here is very similar to what we would have done in **Lab**.
+
+All examples we've followed so far use the built-in [node:assert](https://nodejs.org/api/assert.html) module. It doesn't have the expressiveness of [Hapi code](https://hapi.dev/module/code/), but we've not hit any blockers so far.
+
+The output is similar to **Lab**, and we can see code coverage, though it is a little noisy (see comments below). We can also integrate the code coverage out put with SonarCloud.
+
+We've had to call our `test/` folder `specs/` because the ability to configure what is a 'test' is limited in Node v20*. For example, if the folder was called `test/` it would consider _every_ file in it a test. The same limitation applies to code coverage. The good news is these have been vastly improved in Node v22. So, if we were to upgrade before adopting **node-test** we could rename the folder and improve our code coverage reporting.
+
+Another improvement is the use of `.only`. It is in Node v20*, but you have to add it at all levels for it to be applied. Again, Node v22* brings the feature more in line wih how we would use it in **Lab**.
+
 ## Running the project
 
-Like **water-abstraction-system** this project expects to be run within the WABS ecosystem of apps. For example, when installing we only expect you to create the test DB because if it were to run, it would do so against the existing WABS database.
+Like [water-abstraction-system](https://github.com/DEFRA/water-abstraction-system) this project expects to be run within the WABS ecosystem of apps. For example, when installing we only expect you to create the test DB because if it were to run, it would do so against the existing `wabs` database.
 
 It is built with a focus on running the tests, not on being a working app. But should you wish to this README provides details on what you'll need.
 
@@ -24,7 +36,7 @@ It is built with a focus on running the tests, not on being a working app. But s
 
 Make sure you already have:
 
-- [Node.js v16.*](https://nodejs.org/en/)
+- [Node.js v20.18.*](https://nodejs.org/en/)
 - [PostgreSQL v12](https://www.postgresql.org/)
 
 ## Installation
@@ -32,10 +44,10 @@ Make sure you already have:
 First clone the repository and then drop into your new local repo:
 
 ```bash
-git clone https://github.com/DEFRA/water-abstraction-ava.git && cd water-abstraction-ava
+git clone https://github.com/DEFRA/water-abstraction-node-test.git && cd water-abstraction-node-test
 ```
 
-You'll need to manually create a test database in PostgreSQL plus a user that can access them. Once [configured](#configuration) you can then run `npm migrate:db:test`.
+You'll need to manually create a test database in PostgreSQL plus a user that can access them. Once [configured this project using a .env file](#configuration) you can then run `npm migrate:test`.
 
 Our preference is to run the database and API within Docker, so [install Docker](https://docs.docker.com/get-docker/) if you don't already have it.
 
@@ -48,6 +60,21 @@ However when running locally in development mode or in test it makes use of the 
 Check out [.env.example](/.env.example) for details of the required things you'll need in your `.env` file.
 
 Refer to the [config files](config) for details of all the configuration used.
+
+## Running the tests
+
+To run the unit tests call `npm test`. This is the default test script and will do the following.
+
+- clean the test database of _all_ data then seed any reference data required, for example, regions.
+- run the unit tests
+
+The details for each test, a summary, plus code coverage will be output.
+
+### Alternate test scripts
+
+When working locally it is not always necessary to clean and seed the database before each run. For expedience, you can use `npm run test:skip` to get straight to running the test suite.
+
+In CI we call `npm run test:lcov`. This switches the test reporter from the default [spec](https://nodejs.org/api/test.html#test-reporters) to **lcov**, which generates a file test coverage tools can use.
 
 ## Contributing to this project
 
