@@ -1,6 +1,6 @@
 // Test framework dependencies
 import { describe, it, beforeEach } from 'node:test'
-import assert from 'node:assert/strict'
+import { expect } from 'chai'
 
 // Thing under test
 import filterRoutesService from '../../../app/services/plugins/filter-routes.service.js'
@@ -16,7 +16,7 @@ describe('Filter routes service', () => {
     it('returns the routes unchanged', () => {
       const result = filterRoutesService(routes, 'dev')
 
-      assert.deepEqual(result, routes)
+      expect(result).to.deep.equal(routes)
     })
   })
 
@@ -28,14 +28,9 @@ describe('Filter routes service', () => {
     it('returns the routes filtered', () => {
       const result = filterRoutesService(routes, 'prd')
 
-      assert.notDeepEqual(result, routes)
-      assert.equal(result.length, 2)
-
-      const includesPathToBeFiltered = result.some((path) => {
-        return path.path === '/path-to-be-filtered'
-      })
-
-      assert.equal(includesPathToBeFiltered, false)
+      expect(result).not.to.deep.equal(routes)
+      expect(result).to.have.length(2)
+      expect(result).not.to.include('/path-to-be-filtered')
     })
   })
 })

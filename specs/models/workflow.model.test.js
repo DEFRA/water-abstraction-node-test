@@ -1,6 +1,6 @@
 // Test framework dependencies
 import { describe, it, before, after } from 'node:test'
-import assert from 'node:assert/strict'
+import { expect } from 'chai'
 
 // Test helpers
 import { closeConnection } from '../support/database.js'
@@ -29,8 +29,8 @@ describe('Workflow model', () => {
     it('can successfully run a basic query', async () => {
       const result = await WorkflowModel.query().findById(testRecord.id)
 
-      assert(result instanceof WorkflowModel)
-      assert.equal(result.id, testRecord.id)
+      expect(result).to.be.instanceOf(WorkflowModel)
+      expect(result.id).to.equal(testRecord.id)
     })
   })
 
@@ -40,7 +40,7 @@ describe('Workflow model', () => {
         const query = await WorkflowModel.query()
           .innerJoinRelated('licence')
 
-        assert(query)
+        expect(query).to.be.instanceOf(Array)
       })
 
       it('can eager load the licence', async () => {
@@ -48,11 +48,11 @@ describe('Workflow model', () => {
           .findById(testRecord.id)
           .withGraphFetched('licence')
 
-        assert(result instanceof WorkflowModel)
-        assert.equal(result.id, testRecord.id)
+        expect(result).to.be.instanceOf(WorkflowModel)
+        expect(result.id).to.equal(testRecord.id)
 
-        assert(result.licence instanceof LicenceModel)
-        assert.deepEqual(result.licence, testLicence)
+        expect(result.licence).to.be.instanceOf(LicenceModel)
+        expect(result.licence).to.deep.equal(testLicence)
       })
     })
   })

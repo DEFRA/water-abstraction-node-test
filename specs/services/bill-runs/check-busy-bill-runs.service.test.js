@@ -1,6 +1,6 @@
 // Test framework dependencies
 import { describe, it, beforeEach, afterEach, mock } from 'node:test'
-import assert from 'node:assert/strict'
+import { expect } from 'chai'
 
 // Things we need to stub
 import { db } from '../../../db/db.js'
@@ -23,7 +23,7 @@ describe('Check Busy Bill Runs service', () => {
     it('returns "both"', async () => {
       const result = await CheckBusyBillRunsService()
 
-      assert.equal(result, 'both')
+      expect(result).to.equal('both')
     })
   })
 
@@ -37,7 +37,7 @@ describe('Check Busy Bill Runs service', () => {
     it('returns "cancelling"', async () => {
       const result = await CheckBusyBillRunsService()
 
-      assert.equal(result, 'cancelling')
+      expect(result).to.equal('cancelling')
     })
   })
 
@@ -51,7 +51,7 @@ describe('Check Busy Bill Runs service', () => {
     it('returns "building"', async () => {
       const result = await CheckBusyBillRunsService()
 
-      assert.equal(result, 'building')
+      expect(result).to.equal('building')
     })
   })
 
@@ -65,7 +65,7 @@ describe('Check Busy Bill Runs service', () => {
     it('returns "none"', async () => {
       const result = await CheckBusyBillRunsService()
 
-      assert.equal(result, 'none')
+      expect(result).to.equal('none')
     })
   })
 })
