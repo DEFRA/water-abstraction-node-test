@@ -1,6 +1,6 @@
 // Test framework dependencies
 import { describe, it, beforeEach } from 'node:test'
-import assert from 'node:assert/strict'
+import { expect } from 'chai'
 
 // For running our service
 import { init } from '../../app/server.js'
@@ -20,7 +20,7 @@ describe('Root controller: GET /', () => {
     const response = await server.inject(options)
     const payload = JSON.parse(response.payload)
 
-    assert.equal(response.statusCode, 200)
-    assert.equal(payload.status, 'alive')
+    expect(response.statusCode).to.equal(200)
+    expect(payload.status).to.equal('alive')
   })
 })

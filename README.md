@@ -18,7 +18,9 @@ There's no 'right' way in development. But this feels a bit off to us. Hence our
 
 At this time **node-test** is looking to be a viable alternative to **Jest** and **Lab**. After migrating a file from **water-abstraction-system** to ESM, the test file we create here is very similar to what we would have done in **Lab**.
 
-All examples we've followed so far use the built-in [node:assert](https://nodejs.org/api/assert.html) module. It doesn't have the expressiveness of [Hapi code](https://hapi.dev/module/code/), but we've not hit any blockers so far.
+All examples we've followed so far use the built-in [node:assert](https://nodejs.org/api/assert.html) module. We didn't hit any blockers when first converting tests. But it doesn't have the expressiveness of [Hapi code](https://hapi.dev/module/code/), and it means every test needs updating.
+
+So, we brought in [chai](https://www.chaijs.com/api/), which **Hapi code** is built from. It works fine with **node-test**, doesn't appear to impact performance, and means in a lot of cases we can do a simple copy & paste of the current test.
 
 The output is similar to **Lab**, and we can see code coverage, though it is a little noisy (see comments below). We can also integrate the code coverage out put with SonarCloud.
 

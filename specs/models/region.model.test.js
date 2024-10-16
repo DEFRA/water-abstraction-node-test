@@ -1,6 +1,6 @@
 // Test framework dependencies
 import { describe, it, before, after } from 'node:test'
-import assert from 'node:assert/strict'
+import { expect } from 'chai'
 
 // Test helpers
 import * as BillRunHelper from '../support/helpers/bill-run.helper.js'
@@ -42,8 +42,8 @@ describe('Region model', () => {
     it('can successfully run a basic query', async () => {
       const result = await RegionModel.query().findById(testRecord.id)
 
-      assert(result instanceof RegionModel)
-      assert.equal(result.id, testRecord.id)
+      expect(result).to.be.instanceOf(RegionModel)
+      expect(result.id).to.equal(testRecord.id)
     })
   })
 
@@ -53,7 +53,7 @@ describe('Region model', () => {
         const query = await RegionModel.query()
           .innerJoinRelated('billRuns')
 
-        assert(query)
+        expect(query).to.be.instanceOf(Array)
       })
 
       it('can eager load the bill runs', async () => {
@@ -61,23 +61,14 @@ describe('Region model', () => {
           .findById(testRecord.id)
           .withGraphFetched('billRuns')
 
-        assert(result instanceof RegionModel)
-        assert.equal(result.id, testRecord.id)
+        expect(result).to.be.instanceOf(RegionModel)
+        expect(result.id).to.equal(testRecord.id)
 
-        assert(result.billRuns instanceof Array)
-        assert(result.billRuns[0] instanceof BillRunModel)
+        expect(result.billRuns).to.be.instanceOf(Array)
+        expect(result.billRuns[0]).to.be.instanceOf(BillRunModel)
 
-        const includesFirstBillRun = result.billRuns.some((billRun) => {
-          return billRun.id === testBillRuns[0].id
-        })
-
-        assert(includesFirstBillRun)
-
-        const includesSecondBillRun = result.billRuns.some((billRun) => {
-          return billRun.id === testBillRuns[1].id
-        })
-
-        assert(includesSecondBillRun)
+        expect(result.billRuns).to.deep.include(testBillRuns[0])
+        expect(result.billRuns).to.deep.include(testBillRuns[1])
       })
     })
 
@@ -86,7 +77,7 @@ describe('Region model', () => {
         const query = await RegionModel.query()
           .innerJoinRelated('licences')
 
-        assert(query)
+        expect(query).to.be.instanceOf(Array)
       })
 
       it('can eager load the licences', async () => {
@@ -94,23 +85,13 @@ describe('Region model', () => {
           .findById(testRecord.id)
           .withGraphFetched('licences')
 
-        assert(result instanceof RegionModel)
-        assert.equal(result.id, testRecord.id)
+        expect(result).to.be.instanceOf(RegionModel)
+        expect(result.id).to.equal(testRecord.id)
 
-        assert(result.licences instanceof Array)
-        assert(result.licences[0] instanceof LicenceModel)
-
-        const includesFirstLicence = result.licences.some((licence) => {
-          return licence.id === testLicences[0].id
-        })
-
-        assert(includesFirstLicence)
-
-        const includesSecondLicence = result.licences.some((licence) => {
-          return licence.id === testLicences[1].id
-        })
-
-        assert(includesSecondLicence)
+        expect(result.licences).to.be.instanceOf(Array)
+        expect(result.licences[0]).to.be.instanceOf(LicenceModel)
+        expect(result.licences).to.deep.include(testLicences[0])
+        expect(result.licences).to.deep.include(testLicences[1])
       })
     })
   })
