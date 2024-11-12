@@ -22,24 +22,18 @@ All examples we've followed so far use the built-in [node:assert](https://nodejs
 
 So, we brought in [chai](https://www.chaijs.com/api/), which **Hapi code** is built from. It works fine with **node-test**, doesn't appear to impact performance, and means in a lot of cases we can do a simple copy & paste of the current test.
 
-The output is similar to **Lab**, and we can see code coverage, though it is a little noisy (see comments below). We can also integrate the code coverage out put with SonarCloud.
+The output is similar to **Lab**, and we can see code coverage, though it is a little noisy (see comments below). We can also integrate the code coverage output with SonarCloud.
 
 We've had to call our `test/` folder `specs/` because the ability to configure what is a 'test' is limited in Node v20*. For example, if the folder was called `test/` it would consider _every_ file in it a test. The same limitation applies to code coverage. The good news is these have been vastly improved in Node v22. So, if we were to upgrade before adopting **node-test** we could rename the folder and improve our code coverage reporting.
 
 Another improvement is the use of `.only`. It is in Node v20*, but you have to add it at all levels for it to be applied. Again, Node v22* brings the feature more in line wih how we would use it in **Lab**.
 
-## Running the project
-
-Like [water-abstraction-system](https://github.com/DEFRA/water-abstraction-system) this project expects to be run within the WABS ecosystem of apps. For example, when installing we only expect you to create the test DB because if it were to run, it would do so against the existing `wabs` database.
-
-It is built with a focus on running the tests, not on being a working app. But should you wish to this README provides details on what you'll need.
-
 ## Prerequisites
 
 Make sure you already have:
 
-- [Node.js v20.18.*](https://nodejs.org/en/)
-- [PostgreSQL v12](https://www.postgresql.org/)
+- [Node.js v22.*](https://nodejs.org/en/)
+- [PostgreSQL v14](https://www.postgresql.org/)
 
 ## Installation
 
@@ -48,8 +42,6 @@ First clone the repository and then drop into your new local repo:
 ```bash
 git clone https://github.com/DEFRA/water-abstraction-node-test.git && cd water-abstraction-node-test
 ```
-
-You'll need to manually create a test database in PostgreSQL plus a user that can access them. Once [configured this project using a .env file](#configuration) you can then run `npm migrate:test`.
 
 Our preference is to run the database and API within Docker, so [install Docker](https://docs.docker.com/get-docker/) if you don't already have it.
 
@@ -62,6 +54,21 @@ However when running locally in development mode or in test it makes use of the 
 Check out [.env.example](/.env.example) for details of the required things you'll need in your `.env` file.
 
 Refer to the [config files](config) for details of all the configuration used.
+
+## Initial build
+
+The following will get an environment up and running quickly ready for development. It assumes 2 things
+
+- you have Docker installed
+- you are using [VSCode](https://code.visualstudio.com/) for development
+
+Open the project in VSCode and then use the [Command palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) to access the tasks we have provided in [tasks.json](.vscode/tasks.json)
+
+With the palette open search for **Run test task** and once highlighted select it. From the list that's presented select **⬆️ UP (CMA)**
+
+You should see a new terminal open up and [Docker Compose](https://docs.docker.com/compose/) begin to start building the images. Once that is done it will switch to running the app in docker.
+
+The purpose of the project is to explore using node-test as our test framework, and how best to convert the service to ESM. So, the app does nothing and is not expected to be used.
 
 ## Running the tests
 
