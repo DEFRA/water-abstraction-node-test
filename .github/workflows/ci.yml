@@ -96,7 +96,7 @@ jobs:
       - name: Code coverage
         uses: livewing/lcov-job-summary@v1.2.0
         with:
-          lcov: coverage/lcov.info
+          lcov: lcov.info
 
       - name: Analyze with SonarCloud
         if: github.actor != 'dependabot[bot]'
