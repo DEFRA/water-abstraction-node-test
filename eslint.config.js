@@ -1,5 +1,3 @@
-'use strict'
-
 import jsdocPlugin from 'eslint-plugin-jsdoc'
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import neostandard from 'neostandard'
@@ -63,10 +61,10 @@ export default [
     }
   },
   // This section works as an override to the configuration object above. It tells the jsdoc plugin to ignore any files
-  // in the `app/controllers` and `db/seeds` directories. The controllers purposefully do very little and the purpose of
-  // the seed files is obvious
+  // in the `app/controllers`, 'db/migrations and `db/seeds` directories. The controllers purposefully do very little
+  // and the purpose of the migration and seed files is obvious
   {
-    files: ['app/controllers/**/*', 'db/seeds/**/*'],
+    files: ['app/controllers/**/*', 'db/migrations/**/*', 'db/seeds/**/*'],
     rules: {
       'jsdoc/require-jsdoc': 'off'
     }
