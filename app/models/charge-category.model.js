@@ -10,11 +10,11 @@ import BaseModel from './base.model.js'
 import ChargeReferenceModel from './charge-reference.model.js'
 
 export default class ChargeCategoryModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'chargeCategories'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       chargeReferences: {
         relation: Model.HasManyRelation,

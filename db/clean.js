@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'test') {
 // https://knexjs.org/faq/recipes.html#node-instance-doesn-t-stop-after-using-knex
 //
 // To do this we have added a function to close the connection in database support
-async function run () {
+async function run() {
   console.log('Database clean for tests')
 
   try {

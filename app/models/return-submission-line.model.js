@@ -10,11 +10,11 @@ import BaseModel from './base.model.js'
 import ReturnSubmissionModel from './return-submission.model.js'
 
 export default class ReturnSubmissionLineModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'returnSubmissionLines'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       version: {
         relation: Model.BelongsToOneRelation,

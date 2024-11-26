@@ -20,7 +20,7 @@ import ReviewChargeVersionModel from '../../../app/models/review-charge-version.
  *
  * @returns {Promise<module:ReviewChargeVersionModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return ReviewChargeVersionModel.query()
@@ -38,7 +38,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns data from the query
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     reviewLicenceId: generateUUID(),
     chargeVersionId: generateUUID(),

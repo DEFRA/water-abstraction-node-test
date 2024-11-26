@@ -16,7 +16,7 @@
  *
  * @returns {Object} an empty object or one containing Hapi-pino config to tell it not to log events
  */
-export default function hapiPinoLogInTestService (logInTest) {
+export default function hapiPinoLogInTestService(logInTest) {
   if (process.env.NODE_ENV !== 'test' || logInTest) {
     return {}
   }

@@ -10,11 +10,11 @@ import BaseModel from './base.model.js'
 import ChargeVersionModel from './charge-version.model.js'
 
 export default class ChangeReasonModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'changeReasons'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       chargeVersions: {
         relation: Model.HasManyRelation,

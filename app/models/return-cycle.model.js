@@ -10,11 +10,11 @@ import BaseModel from './base.model.js'
 import ReturnLogModel from './return-log.model.js'
 
 export default class ReturnCycleModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'returnCycles'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       returnLogs: {
         relation: Model.HasManyRelation,

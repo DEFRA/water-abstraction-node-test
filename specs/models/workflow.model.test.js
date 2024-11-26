@@ -37,16 +37,13 @@ describe('Workflow model', () => {
   describe('Relationships', () => {
     describe('when linking to licence', () => {
       it('can successfully run a related query', async () => {
-        const query = await WorkflowModel.query()
-          .innerJoinRelated('licence')
+        const query = await WorkflowModel.query().innerJoinRelated('licence')
 
         expect(query).to.be.instanceOf(Array)
       })
 
       it('can eager load the licence', async () => {
-        const result = await WorkflowModel.query()
-          .findById(testRecord.id)
-          .withGraphFetched('licence')
+        const result = await WorkflowModel.query().findById(testRecord.id).withGraphFetched('licence')
 
         expect(result).to.be.instanceOf(WorkflowModel)
         expect(result.id).to.equal(testRecord.id)

@@ -16,11 +16,11 @@ import ReviewChargeReferenceModel from './review-charge-reference.model.js'
 import TransactionModel from './transaction.model.js'
 
 export default class ChargeReferenceModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'chargeReferences'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       billRunVolumes: {
         relation: Model.HasManyRelation,

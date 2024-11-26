@@ -1,4 +1,4 @@
-export function up (knex) {
+export function up(knex) {
   return knex.raw(`
     CREATE SCHEMA IF NOT EXISTS "crm";
     CREATE SCHEMA IF NOT EXISTS "crm_v2";
@@ -9,7 +9,7 @@ export function up (knex) {
   `)
 }
 
-export function down (knex) {
+export function down(knex) {
   return knex.raw(`
     DROP SCHEMA IF EXISTS "water";
     DROP SCHEMA IF EXISTS "returns";

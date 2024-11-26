@@ -26,7 +26,7 @@ import ReturnSubmissionModel from '../../../app/models/return-submission.model.j
  *
  * @returns {module:ReturnSubmissionModel} The instance of the newly created record
  */
-export function add (data = {}) {
+export function add(data = {}) {
   const insertData = defaults(data)
 
   return ReturnSubmissionModel.query()
@@ -42,7 +42,7 @@ export function add (data = {}) {
  *
  * @param {Object} [data] Any data you want to use instead of the defaults used here or in the database
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     id: generateUUID(),
     returnLogId: generateReturnLogId(),

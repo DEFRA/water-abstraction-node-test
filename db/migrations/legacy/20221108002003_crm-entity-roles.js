@@ -1,10 +1,11 @@
 const tableName = 'entity_roles'
 
-export function up (knex) {
-  return knex
-    .schema
-    .withSchema('crm')
-    .createTable(tableName, (table) => {
+export function up(knex) {
+  return (
+    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
+    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
+    // Knex has created the table.
+    knex.schema.withSchema('crm').createTable(tableName, (table) => {
       // Primary Key
       table.string('entity_role_id').primary()
 
@@ -18,11 +19,7 @@ export function up (knex) {
       // Legacy timestamps
       // NOTE: They are not automatically set
       table.timestamp('created_at').defaultTo(knex.fn.now())
-    })
-    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
-    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
-    // Knex has created the table.
-    .raw(`
+    }).raw(`
       CREATE UNIQUE INDEX unique_role
       ON crm.entity_roles USING btree (
         entity_id,
@@ -31,12 +28,9 @@ export function up (knex) {
         role
       );
     `)
+  )
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .withSchema('crm')
-    .dropTableIfExists(tableName)
-    .drop
+export function down(knex) {
+  return knex.schema.withSchema('crm').dropTableIfExists(tableName).drop
 }

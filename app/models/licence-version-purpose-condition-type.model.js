@@ -10,11 +10,11 @@ import BaseModel from './base.model.js'
 import LicenceVersionPurposeConditionModel from './licence-version-purpose-condition.model.js'
 
 export default class LicenceVersionPurposeConditionTypeModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'licenceVersionPurposeConditionTypes'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       licenceVersionPurposeConditions: {
         relation: Model.HasManyRelation,

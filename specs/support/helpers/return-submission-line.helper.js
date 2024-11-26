@@ -25,7 +25,7 @@ import ReturnSubmissionLineModel from '../../../app/models/return-submission-lin
  *
  * @returns {module:ReturnSubmissionLineModel} The instance of the newly created record
  */
-export function add (data = {}) {
+export function add(data = {}) {
   const insertData = defaults(data)
 
   return ReturnSubmissionLineModel.query()
@@ -41,7 +41,7 @@ export function add (data = {}) {
  *
  * @param {Object} [data] Any data you want to use instead of the defaults used here or in the database
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     id: generateUUID(),
     returnSubmissionId: generateUUID(),

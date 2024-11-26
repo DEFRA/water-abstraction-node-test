@@ -1,11 +1,10 @@
 const viewName = 'bill_runs'
 
-export function up (knex) {
-  return knex
-    .schema
-    .createView(viewName, (view) => {
-      // NOTE: We have commented out unused columns from the source table
-      view.as(knex('billing_batches').withSchema('water').select([
+export function up(knex) {
+  return knex.schema.createView(viewName, (view) => {
+    // NOTE: We have commented out unused columns from the source table
+    view.as(
+      knex('billing_batches').withSchema('water').select([
         'billing_batch_id AS id',
         'region_id',
         'batch_type',
@@ -28,12 +27,11 @@ export function up (knex) {
         'scheme',
         'date_created AS created_at',
         'date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
+export function down(knex) {
+  return knex.schema.dropViewIfExists(viewName)
 }

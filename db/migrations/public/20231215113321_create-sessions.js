@@ -4,9 +4,8 @@ const tableName = 'sessions'
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function up (knex) {
-  return knex
-    .schema
+export function up(knex) {
+  return knex.schema
     .createTable(tableName, (table) => {
       // Primary Key
       table.uuid('id').primary().defaultTo(knex.raw('gen_random_uuid()'))
@@ -31,8 +30,6 @@ export function up (knex) {
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-export function down (knex) {
-  return knex
-    .schema
-    .dropTableIfExists(tableName)
+export function down(knex) {
+  return knex.schema.dropTableIfExists(tableName)
 }

@@ -11,11 +11,11 @@ import GroupModel from './group.model.js'
 import RoleModel from './role.model.js'
 
 export default class GroupRoleModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'groupRoles'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       group: {
         relation: Model.BelongsToOneRelation,

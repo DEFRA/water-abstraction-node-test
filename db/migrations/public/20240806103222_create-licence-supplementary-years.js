@@ -1,8 +1,7 @@
 const tableName = 'licence_supplementary_years'
 
-export function up (knex) {
-  return knex
-    .schema
+export function up(knex) {
+  return knex.schema
     .createTable(tableName, (table) => {
       // Primary Key
       table.uuid('id').primary().defaultTo(knex.raw('gen_random_uuid()'))
@@ -27,8 +26,6 @@ export function up (knex) {
     })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropTableIfExists(tableName)
+export function down(knex) {
+  return knex.schema.dropTableIfExists(tableName)
 }

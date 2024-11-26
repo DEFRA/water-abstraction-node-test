@@ -1,12 +1,10 @@
 const viewName = 'contacts'
 
-export function up (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
-    .createView(viewName, (view) => {
-      // NOTE: We have commented out unused columns from the source table
-      view.as(knex(viewName).withSchema('crm_v2').select([
+export function up(knex) {
+  return knex.schema.dropViewIfExists(viewName).createView(viewName, (view) => {
+    // NOTE: We have commented out unused columns from the source table
+    view.as(
+      knex(viewName).withSchema('crm_v2').select([
         'contacts.contact_id AS id',
         'contacts.salutation',
         'contacts.first_name',
@@ -24,17 +22,16 @@ export function up (knex) {
         'contacts.email',
         'contacts.date_created AS created_at',
         'contacts.date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropView(viewName)
-    .createView(viewName, (view) => {
-      // NOTE: We have commented out unused columns from the source table
-      view.as(knex(viewName).withSchema('crm_v2').select([
+export function down(knex) {
+  return knex.schema.dropView(viewName).createView(viewName, (view) => {
+    // NOTE: We have commented out unused columns from the source table
+    view.as(
+      knex(viewName).withSchema('crm_v2').select([
         'contacts.contact_id AS id',
         'contacts.salutation',
         'contacts.first_name',
@@ -53,6 +50,7 @@ export function down (knex) {
         'contacts.email',
         'contacts.date_created AS created_at',
         'contacts.date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }

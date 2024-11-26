@@ -11,11 +11,11 @@ import ChargeVersionModel from './charge-version.model.js'
 import UserModel from './user.model.js'
 
 export default class ChargeVersionNoteModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'chargeVersionNotes'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       chargeVersion: {
         relation: Model.BelongsToOneRelation,

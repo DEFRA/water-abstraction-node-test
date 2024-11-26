@@ -10,11 +10,11 @@ import BaseModel from './base.model.js'
 import LicenceAgreementModel from './licence-agreement.model.js'
 
 export default class FinancialAgreementModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'financialAgreements'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       licenceAgreements: {
         relation: Model.HasManyRelation,

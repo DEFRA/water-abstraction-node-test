@@ -13,11 +13,11 @@ import ModLogModel from './mod-log.model.js'
 import PurposeModel from './purpose.model.js'
 
 export default class LicenceVersionModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'licenceVersions'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       licence: {
         relation: Model.BelongsToOneRelation,
@@ -71,23 +71,16 @@ export default class LicenceVersionModel extends BaseModel {
    *
    * @returns {object}
    */
-  static get modifiers () {
+  static get modifiers() {
     return {
       // history modifier fetches all the related records needed to determine history properties, for example, created
       // at, created by, and notes from the record and its NALD mod logs (where they exist)
-      history (query) {
+      history(query) {
         query
           .select(['createdAt'])
           .withGraphFetched('modLogs')
           .modifyGraph('modLogs', (builder) => {
-            builder.select([
-              'id',
-              'naldDate',
-              'note',
-              'reasonDescription',
-              'userId'
-            ])
-              .orderBy('externalId', 'asc')
+            builder.select(['id', 'naldDate', 'note', 'reasonDescription', 'userId']).orderBy('externalId', 'asc')
           })
       }
     }
@@ -114,7 +107,7 @@ export default class LicenceVersionModel extends BaseModel {
    *
    * @returns {Date} the date the 'source' record was created
    */
-  $createdAt () {
+  $createdAt() {
     const firstModLog = this._firstModLog()
 
     return firstModLog?.naldDate ?? this.createdAt
@@ -144,7 +137,7 @@ export default class LicenceVersionModel extends BaseModel {
    * @returns {string} the user name of the user that created the 'source' record, else `null` if it cannot be
    * determined
    */
-  $createdBy () {
+  $createdBy() {
     const firstModLog = this._firstModLog()
 
     return firstModLog?.userId ?? null
@@ -165,7 +158,7 @@ export default class LicenceVersionModel extends BaseModel {
    *
    * @returns {string[]} an array of all the notes in ascending date order taken from the record's history
    */
-  $notes () {
+  $notes() {
     const notes = []
 
     for (const modLog of this.modLogs) {
@@ -192,13 +185,13 @@ export default class LicenceVersionModel extends BaseModel {
    *
    * @returns {string} the reason the 'source' record was created, else `null` if it cannot be determined
    */
-  $reason () {
+  $reason() {
     const firstModLog = this._firstModLog()
 
     return firstModLog?.reasonDescription ?? null
   }
 
-  _firstModLog () {
+  _firstModLog() {
     if (this.modLogs.length > 0) {
       return this.modLogs[0]
     }

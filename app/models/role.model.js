@@ -13,11 +13,11 @@ import UserRoleMode from './user-role.model.js'
 import UserModel from './user.model.js'
 
 export default class RoleModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'roles'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       groupRoles: {
         relation: Model.HasManyRelation,

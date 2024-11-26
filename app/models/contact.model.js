@@ -39,11 +39,11 @@ import LicenceDocumentRoleModel from './licence-document-role.model.js'
  *
  */
 export default class ContactModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'contacts'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       billingAccountAddresses: {
         relation: Model.HasManyRelation,
@@ -85,7 +85,7 @@ export default class ContactModel extends BaseModel {
    *
    * @returns {string} The name for the contact derived from its various parts
    */
-  $name () {
+  $name() {
     if (this.contactType === 'department') {
       return this.department
     }
@@ -106,7 +106,7 @@ export default class ContactModel extends BaseModel {
     return onlyPopulatedNameParts.join(' ')
   }
 
-  _determineInitials () {
+  _determineInitials() {
     if (this.initials) {
       return this.initials
     }

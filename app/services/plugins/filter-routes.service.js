@@ -27,7 +27,7 @@
  * @returns {Object[]} an array of Hapi routes, filtered depending on the current environment and whether any paths
  * have been registered as needing filtering
  */
-export default function filterRoutesService (routes, environment) {
+export default function filterRoutesService(routes, environment) {
   if (_protectedEnvironment(environment)) {
     return _filteredRoutes(routes)
   }
@@ -35,11 +35,11 @@ export default function filterRoutesService (routes, environment) {
   return routes
 }
 
-function _protectedEnvironment (environment) {
+function _protectedEnvironment(environment) {
   return ['prd'].includes(environment)
 }
 
-function _filteredRoutes (routes) {
+function _filteredRoutes(routes) {
   return routes.filter((route) => {
     return !route?.options?.app?.excludeFromProd
   })

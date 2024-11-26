@@ -10,11 +10,11 @@ import BaseModel from './base.model.js'
 import EventModel from './event.model.js'
 
 export default class ScheduledNotificationModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'scheduledNotifications'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       event: {
         relation: Model.HasOneRelation,

@@ -1,10 +1,9 @@
 const viewName = 'gauging_stations'
 
-export function up (knex) {
-  return knex
-    .schema
-    .createView(viewName, (view) => {
-      view.as(knex('gauging_stations').withSchema('water').select([
+export function up(knex) {
+  return knex.schema.createView(viewName, (view) => {
+    view.as(
+      knex('gauging_stations').withSchema('water').select([
         'gauging_station_id AS id',
         'label',
         'lat',
@@ -22,12 +21,11 @@ export function up (knex) {
         // 'is_test'
         'date_created AS created_at',
         'date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
+export function down(knex) {
+  return knex.schema.dropViewIfExists(viewName)
 }

@@ -11,18 +11,16 @@ import ReturnSubmissionLineModel from './return-submission-line.model.js'
 import ReturnLogModel from './return-log.model.js'
 
 export default class ReturnSubmissionModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'returnSubmissions'
   }
 
   // Defining which fields contain json allows us to insert an object without needing to stringify it first
-  static get jsonAttributes () {
-    return [
-      'metadata'
-    ]
+  static get jsonAttributes() {
+    return ['metadata']
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       returnLog: {
         relation: Model.BelongsToOneRelation,

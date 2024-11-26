@@ -1,10 +1,11 @@
 const tableName = 'charge_elements'
 
-export function up (knex) {
-  return knex
-    .schema
-    .withSchema('water')
-    .createTable(tableName, (table) => {
+export function up(knex) {
+  return (
+    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
+    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
+    // Knex has created the table.
+    knex.schema.withSchema('water').createTable(tableName, (table) => {
       // Primary Key
       table.uuid('charge_element_id').primary().defaultTo(knex.raw('gen_random_uuid()'))
 
@@ -45,22 +46,16 @@ export function up (knex) {
       // Legacy timestamps
       table.timestamp('date_created', { useTz: false }).notNullable().defaultTo(knex.fn.now())
       table.timestamp('date_updated', { useTz: false }).notNullable().defaultTo(knex.fn.now())
-    })
-    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
-    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
-    // Knex has created the table.
-    .raw(`
+    }).raw(`
       ALTER TABLE water.charge_elements
       ADD CONSTRAINT volume_authorised_annual_quantity
       CHECK (
         ((volume IS NOT NULL) OR (authorised_annual_quantity IS NOT NULL))
       );
     `)
+  )
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .withSchema('water')
-    .dropTableIfExists(tableName)
+export function down(knex) {
+  return knex.schema.withSchema('water').dropTableIfExists(tableName)
 }

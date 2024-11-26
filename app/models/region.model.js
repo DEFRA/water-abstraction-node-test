@@ -11,11 +11,11 @@ import LicenceModel from './licence.model.js'
 import BillRunModel from './bill-run.model.js'
 
 export default class RegionModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'regions'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       licences: {
         relation: Model.HasManyRelation,

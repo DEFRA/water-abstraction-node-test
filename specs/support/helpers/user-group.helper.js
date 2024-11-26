@@ -25,7 +25,7 @@ export const data = userGroups
  *
  * @returns {Promise<module:UserGroupModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return UserGroupModel.query()
@@ -43,7 +43,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const { id: groupId } = GroupSelector()
 
   const defaults = {
@@ -73,7 +73,7 @@ export function defaults (data = {}) {
  *
  * @returns {object} The selected reference entry or one picked at random
  */
-export function select (index = -1) {
+export function select(index = -1) {
   if (index > -1) {
     return userGroups[index]
   }

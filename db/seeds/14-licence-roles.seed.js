@@ -2,7 +2,7 @@ import { timestampForPostgres } from '../../app/lib/general.lib.js'
 import { data as licenceRoles } from './data/licence-roles.js'
 import LicenceRoleModel from '../../app/models/licence-role.model.js'
 
-export async function seed () {
+export async function seed() {
   for (const licenceRole of licenceRoles) {
     const exists = await _exists(licenceRole)
 
@@ -14,7 +14,7 @@ export async function seed () {
   }
 }
 
-async function _exists (licenceRole) {
+async function _exists(licenceRole) {
   const { label, name } = licenceRole
 
   const result = await LicenceRoleModel.query()
@@ -27,11 +27,11 @@ async function _exists (licenceRole) {
   return !!result
 }
 
-async function _insert (licenceRole) {
+async function _insert(licenceRole) {
   return LicenceRoleModel.query().insert(licenceRole)
 }
 
-async function _update (licenceRole) {
+async function _update(licenceRole) {
   const { label, name } = licenceRole
 
   return LicenceRoleModel.query()

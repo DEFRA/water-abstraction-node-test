@@ -1,10 +1,9 @@
 const viewName = 'licence_entity_roles'
 
-export function up (knex) {
-  return knex
-    .schema
-    .createView(viewName, (view) => {
-      view.as(knex('entity_roles').withSchema('crm').select([
+export function up(knex) {
+  return knex.schema.createView(viewName, (view) => {
+    view.as(
+      knex('entity_roles').withSchema('crm').select([
         'entity_role_id AS id',
         'entity_id AS licence_entity_id',
         'role',
@@ -16,12 +15,11 @@ export function up (knex) {
         // NOTE: Can be a UUID to another entity or the email address of the user or NULL
         'created_by',
         'created_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
+export function down(knex) {
+  return knex.schema.dropViewIfExists(viewName)
 }

@@ -46,11 +46,11 @@ import LicenceDocumentRoleModel from './licence-document-role.model.js'
  *
  */
 export default class CompanyModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'companies'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       billingAccountAddresses: {
         relation: Model.HasManyRelation,

@@ -17,7 +17,7 @@ import LicenceSupplementaryYearModel from '../../../app/models/licence-supplemen
  *
  * @returns {Promise<module:LicenceSupplementaryYearModel>} The instance of the newly created record
  */
-export function add (data = {}) {
+export function add(data = {}) {
   const insertData = defaults(data)
 
   return LicenceSupplementaryYearModel.query()
@@ -35,7 +35,7 @@ export function add (data = {}) {
  *
  * @returns {object} - Returns data from the query
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     licenceId: generateUUID(),
     financialYearEnd: 2023

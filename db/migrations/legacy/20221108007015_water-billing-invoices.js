@@ -1,10 +1,11 @@
 const tableName = 'billing_invoices'
 
-export function up (knex) {
-  return knex
-    .schema
-    .withSchema('water')
-    .createTable(tableName, (table) => {
+export function up(knex) {
+  return (
+    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
+    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
+    // Knex has created the table.
+    knex.schema.withSchema('water').createTable(tableName, (table) => {
       // Primary Key
       table.uuid('billing_invoice_id').primary().defaultTo(knex.raw('gen_random_uuid()'))
 
@@ -30,11 +31,7 @@ export function up (knex) {
       // Legacy timestamps
       table.timestamp('date_created', { useTz: false }).notNullable().defaultTo(knex.fn.now())
       table.timestamp('date_updated', { useTz: false }).notNullable().defaultTo(knex.fn.now())
-    })
-    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
-    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
-    // Knex has created the table.
-    .raw(`
+    }).raw(`
       CREATE UNIQUE INDEX unique_batch_year_invoice
       ON water.billing_invoices USING btree (
         billing_batch_id,
@@ -42,8 +39,7 @@ export function up (knex) {
         invoice_account_id
       )
       WHERE ((legacy_id IS NULL) AND (rebilling_state IS NULL));
-    `)
-    .raw(`
+    `).raw(`
       CREATE UNIQUE INDEX unique_batch_year_rebilling_invoice
       ON water.billing_invoices USING btree (
         billing_batch_id,
@@ -53,11 +49,9 @@ export function up (knex) {
       )
       WHERE ((legacy_id IS NULL) AND (rebilling_state IS NOT NULL));
     `)
+  )
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .withSchema('water')
-    .dropTableIfExists(tableName)
+export function down(knex) {
+  return knex.schema.withSchema('water').dropTableIfExists(tableName)
 }

@@ -14,11 +14,11 @@ import LicenceDocumentModel from './licence-document.model.js'
 import LicenceRoleModel from './licence-role.model.js'
 
 export default class LicenceDocumentRoleModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'licenceDocumentRoles'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       address: {
         relation: Model.BelongsToOneRelation,

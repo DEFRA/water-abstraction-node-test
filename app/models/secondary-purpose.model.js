@@ -11,11 +11,11 @@ import LicenceVersionPurposeModel from './licence-version-purpose.model.js'
 import ReturnRequirementPurposeModel from './return-requirement-purpose.model.js'
 
 export default class SecondaryPurposeModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'secondaryPurposes'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       licenceVersionPurposes: {
         relation: Model.HasManyRelation,

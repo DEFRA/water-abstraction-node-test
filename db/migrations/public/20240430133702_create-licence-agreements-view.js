@@ -1,11 +1,10 @@
 const viewName = 'licence_agreements'
 
-export function up (knex) {
-  return knex
-    .schema
-    .createView(viewName, (view) => {
-      // NOTE: We have commented out unused columns from the source table
-      view.as(knex('licence_agreements').withSchema('water').select([
+export function up(knex) {
+  return knex.schema.createView(viewName, (view) => {
+    // NOTE: We have commented out unused columns from the source table
+    view.as(
+      knex('licence_agreements').withSchema('water').select([
         'licence_agreement_id AS id',
         'financial_agreement_type_id AS financial_agreement_id',
         'licence_ref',
@@ -17,12 +16,11 @@ export function up (knex) {
         // 'is_test',
         'date_created AS created_at',
         'date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
+export function down(knex) {
+  return knex.schema.dropViewIfExists(viewName)
 }

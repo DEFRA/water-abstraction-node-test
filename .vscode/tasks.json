@@ -187,10 +187,7 @@
       "id": "services",
       "description": "Services running in docker",
       "type": "pickString",
-      "options": [
-        "db",
-        "dev"
-      ]
+      "options": ["db", "dev"]
     }
   ]
 }

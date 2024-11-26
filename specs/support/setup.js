@@ -5,7 +5,7 @@ import { clean } from './database.js'
 //
 // To do this we have our DatabaseSupport return 'db' from `clean()`. 'db'' is the knex instance so we can ensure we
 // close it in our finally
-async function run () {
+async function run() {
   let connection
 
   try {

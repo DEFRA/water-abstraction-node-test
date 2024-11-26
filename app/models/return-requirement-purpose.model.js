@@ -13,11 +13,11 @@ import ReturnRequirementModel from './return-requirement.model.js'
 import SecondaryPurposeModel from './secondary-purpose.model.js'
 
 export default class ReturnRequirementPurposeModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'returnRequirementPurposes'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       primaryPurpose: {
         relation: Model.BelongsToOneRelation,

@@ -1,11 +1,10 @@
 const viewName = 'users'
 
-export function up (knex) {
-  return knex
-    .schema
-    .createView(viewName, (view) => {
-      // NOTE: We have commented out unused columns from the source table
-      view.as(knex('users').withSchema('idm').select([
+export function up(knex) {
+  return knex.schema.createView(viewName, (view) => {
+    // NOTE: We have commented out unused columns from the source table
+    view.as(
+      knex('users').withSchema('idm').select([
         'users.user_id AS id',
         'users.user_name AS username',
         'users.password',
@@ -21,12 +20,11 @@ export function up (knex) {
         'users.enabled',
         'users.date_created AS created_at',
         'users.date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
+export function down(knex) {
+  return knex.schema.dropViewIfExists(viewName)
 }

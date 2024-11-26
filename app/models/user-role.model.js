@@ -11,11 +11,11 @@ import RoleModel from './role.model.js'
 import UserModel from './user.model.js'
 
 export default class UserRoleModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'userRoles'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       role: {
         relation: Model.BelongsToOneRelation,

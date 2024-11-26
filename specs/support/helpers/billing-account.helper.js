@@ -18,7 +18,7 @@ import { generateUUID } from '../../../app/lib/general.lib.js'
  *
  * @returns {Promise<module:BillingAccountModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return BillingAccountModel.query()
@@ -36,7 +36,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     accountNumber: generateAccountNumber(),
     companyId: generateUUID()
@@ -48,7 +48,7 @@ export function defaults (data = {}) {
   }
 }
 
-export function generateAccountNumber () {
+export function generateAccountNumber() {
   const numbering = randomInteger(10000000, 99999999)
 
   return `T${numbering}A`
