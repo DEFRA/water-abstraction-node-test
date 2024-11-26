@@ -20,7 +20,7 @@ import { generateNaldPointId } from './point.helper.js'
  *
  * @returns {Promise<module:LicenceVersionPurposePointModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return LicenceVersionPurposePointModel.query()
@@ -38,7 +38,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     externalId: generateLicenceVersionPurposePointExternalId(),
     licenceVersionPurposeId: generateUUID(),
@@ -60,7 +60,7 @@ export function defaults (data = {}) {
  *
  * @returns {string} - A randomly generated licence version purpose point external ID
  */
-export function generateLicenceVersionPurposePointExternalId () {
+export function generateLicenceVersionPurposePointExternalId() {
   const naldPointId = generateNaldPointId()
 
   return `9:${randomInteger(100, 99999)}:${naldPointId}`

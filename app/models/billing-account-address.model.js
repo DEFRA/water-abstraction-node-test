@@ -13,11 +13,11 @@ import CompanyModel from './company.model.js'
 import ContactModel from './contact.model.js'
 
 export default class BillingAccountAddressModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'billingAccountAddresses'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       address: {
         relation: Model.BelongsToOneRelation,

@@ -11,11 +11,11 @@ import BillRunModel from './bill-run.model.js'
 import LicenceModel from './licence.model.js'
 
 export default class LicenceSupplementaryYearModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'licenceSupplementaryYears'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       billRun: {
         relation: Model.BelongsToOneRelation,

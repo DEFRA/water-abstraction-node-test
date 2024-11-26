@@ -1,12 +1,10 @@
 const viewName = 'licence_gauging_stations'
 
-export function up (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
-    .createView(viewName, (view) => {
-      // NOTE: We have commented out unused columns from the source table
-      view.as(knex('licence_gauging_stations').withSchema('water').select([
+export function up(knex) {
+  return knex.schema.dropViewIfExists(viewName).createView(viewName, (view) => {
+    // NOTE: We have commented out unused columns from the source table
+    view.as(
+      knex('licence_gauging_stations').withSchema('water').select([
         'licence_gauging_station_id AS id',
         'licence_id',
         'gauging_station_id',
@@ -26,16 +24,15 @@ export function up (knex) {
         // 'is_test',
         'date_created AS created_at',
         'date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
-    .createView(viewName, (view) => {
-      view.as(knex('licence_gauging_stations').withSchema('water').select([
+export function down(knex) {
+  return knex.schema.dropViewIfExists(viewName).createView(viewName, (view) => {
+    view.as(
+      knex('licence_gauging_stations').withSchema('water').select([
         'licence_gauging_station_id AS id',
         'licence_id',
         'gauging_station_id',
@@ -55,6 +52,7 @@ export function down (knex) {
         // 'is_test',
         'date_created AS created_at',
         'date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }

@@ -13,11 +13,11 @@ import LicenceVersionModel from './licence-version.model.js'
 import ReturnVersionModel from './return-version.model.js'
 
 export default class ModLogModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'modLogs'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       chargeVersion: {
         relation: Model.BelongsToOneRelation,

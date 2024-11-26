@@ -11,11 +11,11 @@ import GroupModel from './group.model.js'
 import UserModel from './user.model.js'
 
 export default class UserGroupModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'userGroups'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       group: {
         relation: Model.BelongsToOneRelation,

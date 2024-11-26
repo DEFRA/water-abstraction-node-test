@@ -13,9 +13,7 @@ import filterRoutesService from '../services/plugins/filter-routes.service.js'
 
 import RootRoutes from '../routes/root.routes.js'
 
-const routes = [
-  ...RootRoutes
-]
+const routes = [...RootRoutes]
 
 const RouterPlugin = {
   name: 'router',

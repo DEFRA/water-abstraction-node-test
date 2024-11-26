@@ -1,9 +1,8 @@
 const tableName = 'review_charge_elements'
 const replacedTableName = 'review_charge_element_results'
 
-export function up (knex) {
-  return knex
-    .schema
+export function up(knex) {
+  return knex.schema
     .dropTableIfExists(replacedTableName)
     .createTable(tableName, (table) => {
       // Primary Key
@@ -32,9 +31,8 @@ export function up (knex) {
     })
 }
 
-export function down (knex) {
-  return knex
-    .schema
+export function down(knex) {
+  return knex.schema
     .dropTableIfExists(tableName)
     .createTable(replacedTableName, (table) => {
       // Primary Key

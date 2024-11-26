@@ -11,11 +11,11 @@ import PointModel from './point.model.js'
 import ReturnRequirementModel from './return-requirement.model.js'
 
 export default class ReturnRequirementPointModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'returnRequirementPoints'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       point: {
         relation: Model.BelongsToOneRelation,

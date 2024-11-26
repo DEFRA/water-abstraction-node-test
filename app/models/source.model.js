@@ -10,11 +10,11 @@ import BaseModel from './base.model.js'
 import PointModel from './point.model.js'
 
 export default class SourceModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'sources'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       points: {
         relation: Model.HasManyRelation,

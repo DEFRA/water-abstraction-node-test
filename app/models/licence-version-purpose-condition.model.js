@@ -11,11 +11,11 @@ import LicenceVersionPurposeConditionTypeModel from './licence-version-purpose-c
 import LicenceVersionPurposeModel from './licence-version-purpose.model.js'
 
 export default class LicenceVersionPurposeConditionModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'licenceVersionPurposeConditions'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       licenceVersionPurpose: {
         relation: Model.BelongsToOneRelation,

@@ -16,7 +16,7 @@ import ScheduledNotificationModel from '../../../app/models/scheduled-notificati
  *
  * @returns {Promise<module:ScheduledNotificationModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return ScheduledNotificationModel.query()
@@ -34,7 +34,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     // INFO: The table does not have a default for the createdAt column.
     createdAt: timestampForPostgres()

@@ -19,7 +19,7 @@ export const data = licenceRoles
  *
  * @returns {object} The selected reference entry or one picked at random
  */
-export function select (name = 'licenceHolder') {
+export function select(name = 'licenceHolder') {
   return licenceRoles.find((licenceRole) => {
     return licenceRole.name === name
   })

@@ -30,7 +30,7 @@ import { select as SecondaryPurposeSelector } from './secondary-purpose.helper.j
  *
  * @returns {Promise<module:LicenceVersionPurposeModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return LicenceVersionPurposeModel.query()
@@ -48,7 +48,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const { id: primaryPurposeId } = PrimaryPurposeSelector()
   const { id: purposeId } = PurposeSelector()
   const { id: secondaryPurposeId } = SecondaryPurposeSelector()
@@ -80,6 +80,6 @@ export function defaults (data = {}) {
  *
  * @returns {string} - A randomly generated external id
  */
-export function generateLicenceVersionPurposeExternalId () {
+export function generateLicenceVersionPurposeExternalId() {
   return `${randomInteger(0, 9)}:${randomInteger(10000, 99999)}`
 }

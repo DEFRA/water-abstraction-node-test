@@ -23,11 +23,11 @@ import LicenceEntityModel from './licence-entity.model.js'
  * From it we can identify the 'entity' which has the role of primary user.
  */
 export default class LicenceEntityRoleModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'licenceEntityRoles'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       companyEntity: {
         relation: Model.BelongsToOneRelation,

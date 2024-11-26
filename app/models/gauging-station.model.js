@@ -10,18 +10,16 @@ import BaseModel from './base.model.js'
 import LicenceGaugingStationModel from './licence-gauging-station.model.js'
 
 export default class GaugingStationModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'gaugingStations'
   }
 
   // Defining which fields contain json allows us to insert an object without needing to stringify it first
-  static get jsonAttributes () {
-    return [
-      'metadata'
-    ]
+  static get jsonAttributes() {
+    return ['metadata']
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       licenceGaugingStations: {
         relation: Model.HasManyRelation,

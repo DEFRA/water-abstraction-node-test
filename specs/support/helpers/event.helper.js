@@ -30,7 +30,7 @@ import { generateUUID, timestampForPostgres } from '../../../app/lib/general.lib
  *
  * @returns {Promise<module:EventModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return EventModel.query()
@@ -48,7 +48,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {

@@ -23,5 +23,4 @@ Model.knex(db)
  * one time call to `Model.knex()` even if the `BaseModel` itself does not currently do anything. Having all our models
  * extend from this base class does mean should the need arise we are all set up to implement that shared config.
  */
-export default class BaseModel extends Model {
-}
+export default class BaseModel extends Model {}

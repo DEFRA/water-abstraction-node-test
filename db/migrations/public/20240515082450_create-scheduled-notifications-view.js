@@ -1,11 +1,10 @@
 const viewName = 'scheduled_notifications'
 
-export function up (knex) {
-  return knex
-    .schema
-    .createView(viewName, (view) => {
-      // NOTE: We have commented out unused columns from the source table
-      view.as(knex('scheduled_notification').withSchema('water').select([
+export function up(knex) {
+  return knex.schema.createView(viewName, (view) => {
+    // NOTE: We have commented out unused columns from the source table
+    view.as(
+      knex('scheduled_notification').withSchema('water').select([
         'id',
         'recipient',
         'message_type',
@@ -28,12 +27,11 @@ export function up (knex) {
         'notification_type',
         'job_id',
         'date_created AS created_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
+export function down(knex) {
+  return knex.schema.dropViewIfExists(viewName)
 }

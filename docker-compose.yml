@@ -5,7 +5,7 @@ services:
       - ./scripts/init_db.sh:/docker-entrypoint-initdb.d/init_db.sh
       - nt_db_volume:/var/lib/postgresql/data
     ports:
-      - "54321:5432"
+      - '54321:5432'
     environment:
       - POSTGRES_PASSWORD=password
       - TZ=UTC
@@ -19,15 +19,14 @@ services:
       context: .
       target: node_base
     ports:
-      - "8044:8044"
-      - "9044:9044"
+      - '8044:8044'
+      - '9044:9044'
     volumes:
       - .:/home
     environment:
       - TZ=UTC
     depends_on:
       - db
-
 
 volumes:
   nt_db_volume:

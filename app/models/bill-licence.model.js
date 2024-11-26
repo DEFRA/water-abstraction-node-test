@@ -12,11 +12,11 @@ import LicenceModel from './licence.model.js'
 import TransactionModel from './transaction.model.js'
 
 export default class BillLicenceModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'billLicences'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       bill: {
         relation: Model.BelongsToOneRelation,

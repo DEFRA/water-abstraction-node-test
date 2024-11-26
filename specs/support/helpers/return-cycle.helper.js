@@ -27,7 +27,7 @@ export const data = returnCycles
  *
  * @returns {Promise<module:ReturnLogModel>} The instance of the newly created record
  */
-export function add (data = {}) {
+export function add(data = {}) {
   const insertData = defaults(data)
 
   return ReturnCycleModel.query()
@@ -45,7 +45,7 @@ export function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
@@ -79,7 +79,7 @@ export function defaults (data = {}) {
  *
  * @returns {object} The selected reference entry or one picked at random
  */
-export function select (index = -1) {
+export function select(index = -1) {
   if (index > -1) {
     return returnCycles[index]
   }

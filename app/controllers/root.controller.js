@@ -3,6 +3,6 @@
  * @module RootController
  */
 
-export function index (_request, _h) {
+export function index(_request, _h) {
   return { status: 'alive' }
 }

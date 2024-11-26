@@ -21,7 +21,7 @@ import GaugingStationModel from '../../../app/models/gauging-station.model.js'
  *
  * @returns {Promise<module:GaugingStationModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return GaugingStationModel.query()
@@ -39,7 +39,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {

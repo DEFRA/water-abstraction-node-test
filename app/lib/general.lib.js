@@ -27,7 +27,7 @@ import { randomUUID } from 'crypto'
  * @param {string} message - the message to log
  * @param {object} [data] - additional data to include with the log output
  */
-export function calculateAndLogTimeTaken (startTime, message, data = {}) {
+export function calculateAndLogTimeTaken(startTime, message, data = {}) {
   const endTime = currentTimeInNanoseconds()
   const timeTakenNs = endTime - startTime
   const timeTakenMs = timeTakenNs / 1000000n
@@ -62,7 +62,7 @@ export function calculateAndLogTimeTaken (startTime, message, data = {}) {
  *
  * @returns {bigint} the current time in nanoseconds
  */
-export function currentTimeInNanoseconds () {
+export function currentTimeInNanoseconds() {
   return process.hrtime.bigint()
 }
 
@@ -74,7 +74,7 @@ export function currentTimeInNanoseconds () {
  *
  * @returns {object} An object containing a `startDate` and `endDate`
  */
-export function determineCurrentFinancialYear () {
+export function determineCurrentFinancialYear() {
   const currentDate = new Date()
   const currentYear = currentDate.getFullYear()
 
@@ -106,7 +106,7 @@ export function determineCurrentFinancialYear () {
  * @param {string} [text='Changes made'] - text for the notification
  *
  */
-export function flashNotification (yar, title = 'Updated', text = 'Changes made') {
+export function flashNotification(yar, title = 'Updated', text = 'Changes made') {
   yar.flash('notification', {
     title,
     text
@@ -127,9 +127,9 @@ export function flashNotification (yar, title = 'Updated', text = 'Changes made'
  *
  * https://nodejs.org/api/crypto.html#cryptorandomuuidoptions
  *
- * @returns {String} a randomly generated UUID
+ * @returns {string} a randomly generated UUID
  */
-export function generateUUID () {
+export function generateUUID() {
   return randomUUID({ disableEntropyCache: true })
 }
 
@@ -162,7 +162,7 @@ export function generateUUID () {
  *
  * @returns {boolean} Returns true if there _any_ check period overlaps with a reference period, else false
  */
-export function periodsOverlap (referencePeriods, checkPeriods) {
+export function periodsOverlap(referencePeriods, checkPeriods) {
   for (const referencePeriod of referencePeriods) {
     const overLappingPeriods = checkPeriods.filter((checkPeriod) => {
       if (checkPeriod.startDate > referencePeriod.endDate || referencePeriod.startDate > checkPeriod.endDate) {
@@ -191,7 +191,7 @@ export function periodsOverlap (referencePeriods, checkPeriods) {
  *
  * @returns {string} The date now as an ISO string, for example `'2023-01-13T18:29:51.682Z'`
  */
-export function timestampForPostgres () {
+export function timestampForPostgres() {
   return new Date().toISOString()
 }
 
@@ -227,7 +227,7 @@ export function timestampForPostgres () {
  *
  * @returns {boolean} true if a match else false
  */
-export function transactionsMatch (left, right) {
+export function transactionsMatch(left, right) {
   // When we put together this matching logic our instincts were to try and do something 'better' than this long,
   // chained `&&` statement. But whatever we came up with was
   //
@@ -236,7 +236,8 @@ export function transactionsMatch (left, right) {
   //
   // We also believe this makes it easy to see what properties are being compared. Plus the moment something doesn't
   // match we bail. So, much as it feels 'wrong', we are sticking with it!
-  return left.chargeType === right.chargeType &&
+  return (
+    left.chargeType === right.chargeType &&
     left.chargeCategoryCode === right.chargeCategoryCode &&
     left.billableDays === right.billableDays &&
     left.section126Factor === right.section126Factor &&
@@ -248,4 +249,5 @@ export function transactionsMatch (left, right) {
     left.supportedSource === right.supportedSource &&
     left.supportedSourceName === right.supportedSourceName &&
     left.waterCompanyCharge === right.waterCompanyCharge
+  )
 }

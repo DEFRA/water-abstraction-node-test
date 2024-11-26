@@ -1,10 +1,11 @@
 const tableName = 'document_roles'
 
-export function up (knex) {
-  return knex
-    .schema
-    .withSchema('crm_v2')
-    .createTable(tableName, (table) => {
+export function up(knex) {
+  return (
+    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
+    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
+    // Knex has created the table.
+    knex.schema.withSchema('crm_v2').createTable(tableName, (table) => {
       // Primary Key
       table.uuid('document_role_id').primary().defaultTo(knex.raw('gen_random_uuid()'))
 
@@ -25,22 +26,16 @@ export function up (knex) {
 
       // Constraints
       table.unique(['document_id', 'role_id', 'start_date'], { useConstraint: true })
-    })
-    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
-    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
-    // Knex has created the table.
-    .raw(`
+    }).raw(`
       ALTER TABLE crm_v2.document_roles
       ADD CONSTRAINT company_or_invoice_account
       CHECK (
         ((company_id IS NOT NULL AND address_id IS NOT NULL) OR invoice_account_id IS NOT NULL)
       );
     `)
+  )
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .withSchema('crm_v2')
-    .dropTableIfExists(tableName)
+export function down(knex) {
+  return knex.schema.withSchema('crm_v2').dropTableIfExists(tableName)
 }

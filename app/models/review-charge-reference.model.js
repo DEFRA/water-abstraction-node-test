@@ -12,11 +12,11 @@ import ReviewChargeElementModel from './review-charge-element.model.js'
 import ReviewChargeVersionModel from './review-charge-version.model.js'
 
 export default class ReviewChargeReferenceModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'reviewChargeReferences'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       chargeReference: {
         relation: Model.BelongsToOneRelation,

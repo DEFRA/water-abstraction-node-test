@@ -34,7 +34,7 @@ import ReviewReturnModel from '../../../app/models/review-return.model.js'
  *
  * @returns {Promise<module:ReviewReturnModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return ReviewReturnModel.query()
@@ -52,7 +52,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns data from the query
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const licenceRef = data.licenceRef ? data.licenceRef : generateLicenceRef()
   const returnReference = data.returnReference ? data.returnReference : randomInteger(10000000, 19999999)
 

@@ -23,7 +23,7 @@ import LicenceGaugingStationModel from '../../../app/models/licence-gauging-stat
  *
  * @returns {Promise<module:LicenceGaugingStationModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return LicenceGaugingStationModel.query()
@@ -41,7 +41,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     gaugingStationId: generateUUID(),
     licenceId: generateUUID(),

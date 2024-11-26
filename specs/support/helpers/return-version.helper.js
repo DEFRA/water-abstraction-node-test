@@ -22,7 +22,7 @@ import ReturnVersionModel from '../../../app/models/return-version.model.js'
  *
  * @returns {Promise<module:ReturnVersionModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return ReturnVersionModel.query()
@@ -40,7 +40,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const version = data.version ? data.version : 100
 
   const defaults = {

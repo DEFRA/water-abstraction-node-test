@@ -21,7 +21,7 @@ export const data = secondaryPurposes
  *
  * @returns {object} The selected reference entry or one picked at random
  */
-export function select (index = -1) {
+export function select(index = -1) {
   if (index > -1) {
     return secondaryPurposes[index]
   }

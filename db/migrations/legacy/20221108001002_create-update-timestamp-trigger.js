@@ -1,6 +1,6 @@
 // https://dev.to/morz/knex-psql-updating-timestamps-like-a-pro-2fg6
 
-export function up (knex) {
+export function up(knex) {
   return knex.raw(`
     CREATE OR REPLACE FUNCTION update_timestamp() RETURNS TRIGGER
     LANGUAGE plpgsql
@@ -14,7 +14,7 @@ export function up (knex) {
   `)
 }
 
-export function down (knex) {
+export function down(knex) {
   return knex.raw(`
     DROP FUNCTION IF EXISTS update_timestamp() CASCADE;
   `)

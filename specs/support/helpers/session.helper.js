@@ -16,7 +16,7 @@ import SessionModel from '../../../app/models/session.model.js'
  *
  * @returns {Promise<module:SessionModel>} The instance of the newly created record
  */
-export function add (data = {}) {
+export function add(data = {}) {
   const insertData = defaults(data)
 
   return SessionModel.query()
@@ -34,7 +34,7 @@ export function add (data = {}) {
  *
  * @returns {object} - Returns data from the query
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {}
 
   return {

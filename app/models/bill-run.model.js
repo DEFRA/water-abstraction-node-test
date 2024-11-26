@@ -13,11 +13,11 @@ import RegionModel from './region.model.js'
 import ReviewLicenceModel from './review-licence.model.js'
 
 export default class BillRunModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'billRuns'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       billRunVolumes: {
         relation: Model.HasManyRelation,
@@ -54,7 +54,7 @@ export default class BillRunModel extends BaseModel {
     }
   }
 
-  static get errorCodes () {
+  static get errorCodes() {
     return {
       failedToPopulateChargeVersions: 10,
       failedToProcessChargeVersions: 20,

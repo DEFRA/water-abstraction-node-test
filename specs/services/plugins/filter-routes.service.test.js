@@ -35,7 +35,7 @@ describe('Filter routes service', () => {
   })
 })
 
-function _routes () {
+function _routes() {
   return [
     { path: '/' },
     { path: '/admin' },

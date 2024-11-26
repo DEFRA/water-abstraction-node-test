@@ -11,11 +11,11 @@ import BillLicenceModel from './bill-licence.model.js'
 import ChargeReferenceModel from './charge-reference.model.js'
 
 export default class TransactionModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'transactions'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       billLicence: {
         relation: Model.BelongsToOneRelation,
@@ -37,12 +37,7 @@ export default class TransactionModel extends BaseModel {
   }
 
   // Defining which fields contain json allows us to insert an object without needing to stringify it first
-  static get jsonAttributes () {
-    return [
-      'abstractionPeriod',
-      'grossValuesCalculated',
-      'metadata',
-      'purposes'
-    ]
+  static get jsonAttributes() {
+    return ['abstractionPeriod', 'grossValuesCalculated', 'metadata', 'purposes']
   }
 }

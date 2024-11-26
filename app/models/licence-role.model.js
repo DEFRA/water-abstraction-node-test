@@ -12,11 +12,11 @@ import CompanyContactModel from './company-contact.model.js'
 import LicenceDocumentRoleModel from './licence-document-role.model.js'
 
 export default class LicenceRoleModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'licenceRoles'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       companyAddresses: {
         relation: Model.HasManyRelation,

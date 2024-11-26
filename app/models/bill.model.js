@@ -12,11 +12,11 @@ import BillLicenceModel from './bill-licence.model.js'
 import BillRunModel from './bill-run.model.js'
 
 export default class BillModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'bills'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       billingAccount: {
         relation: Model.BelongsToOneRelation,

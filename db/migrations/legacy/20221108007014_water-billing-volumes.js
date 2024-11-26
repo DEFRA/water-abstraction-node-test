@@ -1,10 +1,11 @@
 const tableName = 'billing_volumes'
 
-export function up (knex) {
-  return knex
-    .schema
-    .withSchema('water')
-    .createTable(tableName, (table) => {
+export function up(knex) {
+  return (
+    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
+    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
+    // Knex has created the table.
+    knex.schema.withSchema('water').createTable(tableName, (table) => {
       // Primary Key
       table.uuid('billing_volume_id').primary().defaultTo(knex.raw('gen_random_uuid()'))
 
@@ -21,11 +22,7 @@ export function up (knex) {
       // Specify the precision and scale
       table.decimal('volume', 20, 6).defaultTo(0)
       table.timestamp('errored_on')
-    })
-    // If it was a simple check constraint we could have used https://knexjs.org/guide/schema-builder.html#checks
-    // But because of the complexity of the constraint we have had to drop to using raw() to add the constraint after
-    // Knex has created the table.
-    .raw(`
+    }).raw(`
       CREATE UNIQUE INDEX uniq_charge_element_id_financial_year_season_err
       ON water.billing_volumes USING btree (
         charge_element_id,
@@ -35,11 +32,9 @@ export function up (knex) {
       )
       WHERE (errored_on IS NULL);
     `)
+  )
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .withSchema('water')
-    .dropTableIfExists(tableName)
+export function down(knex) {
+  return knex.schema.withSchema('water').dropTableIfExists(tableName)
 }

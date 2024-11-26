@@ -1,5 +1,3 @@
-'use strict'
-
 const defaults = {
   autorestart: false,
   min_uptime: '3s',
@@ -43,7 +41,7 @@ const defaults = {
   ]
 }
 
-module.exports = {
+export default {
   apps: [
     {
       name: 'node-test',

@@ -18,7 +18,6 @@ jobs:
       DEFAULT_USER_PASSWORD: P@55word
       ENVIRONMENT: dev
 
-
     # Service containers to run with `runner-job`
     services:
       # Label used to access the service container
@@ -42,7 +41,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of sonarcloud analysis
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of sonarcloud analysis
 
       # Before we do anything, check we haven't accidentally left any `describe.only()` or `it.only(` statements in the
       # tests
@@ -55,7 +54,7 @@ jobs:
       - name: Install Node
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          node-version-file: '.nvmrc'
 
       # Speeds up workflows by reading the node modules from cache. Obviously you need to run it at least once, and the
       # cache will be updated should the package-lock.json file change

@@ -1,11 +1,10 @@
 const viewName = 'charge_elements'
 
-export function up (knex) {
-  return knex
-    .schema
-    .createView(viewName, (view) => {
-      // NOTE: We have commented out unused columns from the source table
-      view.as(knex('charge_purposes').withSchema('water').select([
+export function up(knex) {
+  return knex.schema.createView(viewName, (view) => {
+    // NOTE: We have commented out unused columns from the source table
+    view.as(
+      knex('charge_purposes').withSchema('water').select([
         'charge_purpose_id AS id',
         'charge_element_id as charge_reference_id',
         'abstraction_period_start_day',
@@ -26,12 +25,11 @@ export function up (knex) {
         'is_section_127_agreement_enabled AS section_127_agreement',
         'date_created AS created_at',
         'date_updated AS updated_at'
-      ]))
-    })
+      ])
+    )
+  })
 }
 
-export function down (knex) {
-  return knex
-    .schema
-    .dropViewIfExists(viewName)
+export function down(knex) {
+  return knex.schema.dropViewIfExists(viewName)
 }

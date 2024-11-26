@@ -12,18 +12,16 @@ import ReturnCycleModel from './return-cycle.model.js'
 import ReturnSubmissionModel from './return-submission.model.js'
 
 export default class ReturnLogModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'returnLogs'
   }
 
   // Defining which fields contain json allows us to insert an object without needing to stringify it first
-  static get jsonAttributes () {
-    return [
-      'metadata'
-    ]
+  static get jsonAttributes() {
+    return ['metadata']
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       licence: {
         relation: Model.BelongsToOneRelation,

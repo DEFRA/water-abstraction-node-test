@@ -11,11 +11,11 @@ import GaugingStationModel from './gauging-station.model.js'
 import LicenceModel from './licence.model.js'
 
 export default class LicenceGaugingStationModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'licenceGaugingStations'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       gaugingStation: {
         relation: Model.BelongsToOneRelation,

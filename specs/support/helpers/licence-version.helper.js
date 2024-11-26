@@ -24,7 +24,7 @@ import { randomInteger } from '../general.js'
  *
  * @returns {Promise<module:LicenceVersionModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return LicenceVersionModel.query()
@@ -42,7 +42,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const timestamp = timestampForPostgres()
 
   const defaults = {
@@ -67,6 +67,6 @@ export function defaults (data = {}) {
  *
  * @returns {string} - A randomly generated externalId
  */
-export function generateLicenceVersionExternalId () {
+export function generateLicenceVersionExternalId() {
   return `${randomInteger(0, 9)}:${randomInteger(10000, 99999)}:${randomInteger(1, 100)}:0`
 }

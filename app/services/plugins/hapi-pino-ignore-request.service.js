@@ -29,12 +29,12 @@
  *
  * So, we also do not log any requests to `/assets/*`.
  *
- * @param {Object} options The options passed to the HapiPino plugin
- * @param {request} request Hapi request object created internally for each incoming request
+ * @param {object} options - The options passed to the HapiPino plugin
+ * @param {request} request - Hapi request object created internally for each incoming request
  *
  * @returns {boolean} true if the request should be ignored, else false
  */
-export default function hapiPinoIgnoreRequestService (options, request) {
+export default function hapiPinoIgnoreRequestService(options, request) {
   const staticPaths = ['/', '/status', '/favicon.ico']
 
   // If request is a known path ignore it

@@ -23,7 +23,7 @@ import { generateLicenceRef } from './licence.helper.js'
  *
  * @returns {Promise<module:ModLogModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return ModLogModel.query()
@@ -41,7 +41,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const regionCode = randomRegionCode()
 
   const defaults = {
@@ -61,7 +61,16 @@ export function defaults (data = {}) {
   }
 }
 
-export function generateRegionNaldPatternExternalId (regionCode = null) {
+/**
+ * Generates a NALD pattern external ID (e.g. 9:10001)
+ *
+ * The pattern is: [region code]:[NALD ID]
+ *
+ * @param {number} [regionCode] - The region code to use, if not provided a random one is used
+ *
+ * @returns {string} The generated external ID
+ */
+export function generateRegionNaldPatternExternalId(regionCode = null) {
   const regionCodeToUse = regionCode ?? randomInteger(1, 9)
 
   return `${regionCodeToUse}:${randomInteger(100, 99999)}`

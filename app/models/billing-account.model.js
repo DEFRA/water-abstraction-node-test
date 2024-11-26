@@ -13,11 +13,11 @@ import ChargeVersionModel from './charge-version.model.js'
 import CompanyModel from './company.model.js'
 
 export default class BillingAccountModel extends BaseModel {
-  static get tableName () {
+  static get tableName() {
     return 'billingAccounts'
   }
 
-  static get relationMappings () {
+  static get relationMappings() {
     return {
       billingAccountAddresses: {
         relation: Model.HasManyRelation,

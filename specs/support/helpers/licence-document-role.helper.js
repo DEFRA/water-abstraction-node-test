@@ -20,7 +20,7 @@ import LicenceDocumentRoleModel from '../../../app/models/licence-document-role.
  *
  * @returns {Promise<module:LicenceDocumentRoleModel>} The instance of the newly created record
  */
-export async function add (data = {}) {
+export async function add(data = {}) {
   const insertData = defaults(data)
 
   return LicenceDocumentRoleModel.query()
@@ -38,7 +38,7 @@ export async function add (data = {}) {
  *
  * @returns {object} - Returns the set defaults with the override data spread
  */
-export function defaults (data = {}) {
+export function defaults(data = {}) {
   const defaults = {
     licenceDocumentId: generateUUID(),
     companyId: generateUUID(),

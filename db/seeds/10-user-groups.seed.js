@@ -6,7 +6,7 @@ import { data as users } from './data/users.js'
 
 import ServerConfig from '../../config/server.config.js'
 
-export async function seed () {
+export async function seed() {
   // These user groups relate to users that are only for use in our non-production environments
   if (ServerConfig.environment === 'production') {
     return
@@ -23,7 +23,7 @@ export async function seed () {
   }
 }
 
-async function _exists (group, username) {
+async function _exists(group, username) {
   const result = await UserGroupModel.query()
     .select('userGroups.id')
     .innerJoinRelated('group')
@@ -36,17 +36,20 @@ async function _exists (group, username) {
   return !!result
 }
 
-async function _insert (id, group, username) {
-  return db.raw(`
+async function _insert(id, group, username) {
+  return db.raw(
+    `
     INSERT INTO public.user_groups (id, group_id, user_id)
     SELECT
       (?) AS id,
       (SELECT id FROM public."groups" g WHERE g."group" = ?) AS group_id,
       (SELECT id FROM public.users u WHERE u.username = ?) AS user_id;
-    `, [id, group, username])
+    `,
+    [id, group, username]
+  )
 }
 
-function _names (userGroup) {
+function _names(userGroup) {
   const { group } = groups.find((group) => {
     return group.id === userGroup.groupId
   })
