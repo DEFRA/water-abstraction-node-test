@@ -5,7 +5,7 @@
 
 import { dbConfig } from './db.js'
 
-import { wipe } from '../specs/support/database.js'
+import { wipe } from '../test/support/database.js'
 
 /**
  * Wipe the test database of all tables, views and legacy schemas

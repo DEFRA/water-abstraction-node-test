@@ -27,7 +27,7 @@ const defaults = {
     'sonar-project.properties',
     'app/views',
     'app/public',
-    'specs',
+    'test',
     '.eslintrc.cjs',
     'lcov.info',
     'Dockerfile',
