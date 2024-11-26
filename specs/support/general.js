@@ -64,8 +64,8 @@ export function postRequestOptions(
 /**
  * Generate a random integer within a range (inclusive)
  *
- * @param {number} min lowest number (integer) in the range (inclusive)
- * @param {number} max largest number (integer) in the range (inclusive)
+ * @param {number} min - lowest number (integer) in the range (inclusive)
+ * @param {number} max - largest number (integer) in the range (inclusive)
  *
  * Credit https://stackoverflow.com/a/7228322
  *

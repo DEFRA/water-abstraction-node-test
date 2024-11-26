@@ -47,7 +47,7 @@ export async function clean() {
   }
 
   // TODO: when all calls to DatabaseSupport.clean() (this function) have been removed from the tests we can drop this
-  return _seed()
+  await _seed()
 }
 
 /**

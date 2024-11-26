@@ -25,7 +25,7 @@ import ReturnLogModel from '../../../app/models/return-log.model.js'
  * - `status` - completed
  * - `updatedAt` - new Date()
  *
- * @param {Object} [data] Any data you want to use instead of the defaults used here or in the database
+ * @param {object} [data] - Any data you want to use instead of the defaults used here or in the database
  *
  * @returns {Promise<module:ReturnLogModel>} The instance of the newly created record
  */
@@ -43,7 +43,9 @@ export function add(data = {}) {
  * It will override or append to them any data provided. Mainly used by the `add()` method, we make it available
  * for use in tests to avoid having to duplicate values.
  *
- * @param {Object} [data] Any data you want to use instead of the defaults used here or in the database
+ * @param {object} [data] - Any data you want to use instead of the defaults used here or in the database
+ *
+ * @returns {object} - Returns the set defaults with the override data spread
  */
 export function defaults(data = {}) {
   const licenceRef = data.licenceRef ? data.licenceRef : generateLicenceRef()
@@ -71,6 +73,26 @@ export function defaults(data = {}) {
   }
 }
 
+/**
+ * Returns a randomly generated return log Id
+ *
+ * Unlike other tables, the previous team opted to generate a unique ID based on properties of the return log including
+ * start and end dates, version and references.
+ *
+ * So, in order to replicate that we have this helper method, that defaults some of those values, and randomises others
+ * in order to generate a unique return log ID.
+ *
+ * If you have known values, for example, the licence reference they can be passed to this helper and it will
+ * incorporate them into the ID.
+ *
+ * @param {string} [startDate] - the start date as a string, for example '2022-04-01'
+ * @param {string} [endDate] - the end date as a string, for example '2023-03-31'
+ * @param {number} [version] - the version number to use, for example 1
+ * @param {string} [licenceRef] - the licence reference to use
+ * @param {string} [returnReference] - the return requirement reference to use
+ *
+ * @returns {string} the generated return log ID
+ */
 export function generateReturnLogId(
   startDate = '2022-04-01',
   endDate = '2023-03-31',

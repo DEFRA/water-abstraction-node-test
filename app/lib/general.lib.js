@@ -127,7 +127,7 @@ export function flashNotification(yar, title = 'Updated', text = 'Changes made')
  *
  * https://nodejs.org/api/crypto.html#cryptorandomuuidoptions
  *
- * @returns {String} a randomly generated UUID
+ * @returns {string} a randomly generated UUID
  */
 export function generateUUID() {
   return randomUUID({ disableEntropyCache: true })

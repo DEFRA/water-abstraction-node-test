@@ -12,9 +12,9 @@
  * But there will be times when trying to diagnose an issue that we will want log output. So using an env var we can
  * override the default and tell hapi-pino to log everything as normal.
  *
- * @param {Boolean} logInTest true if you want to see hapi-pino log output in unit tests else false
+ * @param {boolean} logInTest - true if you want to see hapi-pino log output in unit tests else false
  *
- * @returns {Object} an empty object or one containing Hapi-pino config to tell it not to log events
+ * @returns {object} an empty object or one containing Hapi-pino config to tell it not to log events
  */
 export default function hapiPinoLogInTestService(logInTest) {
   if (process.env.NODE_ENV !== 'test' || logInTest) {
