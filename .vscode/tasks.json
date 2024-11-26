@@ -107,6 +107,21 @@
       }
     },
     {
+      "label": "⏯️ Restart (Node)",
+      "detail": "Restart the node-test app in pm2",
+      "type": "shell",
+      "command": "docker compose exec dev /bin/bash -c 'pm2 restart node-test --update-env'",
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": true
+      }
+    },
+    {
       "label": "🪵 Log (Node)",
       "detail": "Show the pm2 log for node-test",
       "type": "shell",

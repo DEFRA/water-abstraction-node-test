@@ -21,7 +21,7 @@ import { seed as RegionsSeeder } from '../../db/seeds/01-regions.seed.js'
 import { seed as ReturnCycleSeeder } from '../../db/seeds/16-return-cycles.seed.js'
 import { seed as RolesSeeder } from '../../db/seeds/07-roles.seed.js'
 import { seed as SecondaryPurposesSeeder } from '../../db/seeds/04-secondary-purposes.seed.js'
-import { seed as SourcesSeeder } from '../../db/seeds/15-sources.js'
+import { seed as SourcesSeeder } from '../../db/seeds/15-sources.seed.js'
 import { seed as UserGroupsSeeder } from '../../db/seeds/10-user-groups.seed.js'
 import { seed as UsersSeeder } from '../../db/seeds/09-users.seed.js'
 
