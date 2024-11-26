@@ -1,12 +1,11 @@
-
 'use strict'
 
-const jsdocPlugin = require('eslint-plugin-jsdoc')
-const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended')
-const neostandard = require('neostandard')
-const globals = require('globals')
+import jsdocPlugin from 'eslint-plugin-jsdoc'
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
+import neostandard from 'neostandard'
+import globals from 'globals'
 
-module.exports = [
+export default [
   // Start with neostandard ESLint rules. neostandard is the successor to StandardJS (which has stalled due to a
   // governance issue https://github.com/standard/standard/issues/1948#issuecomment-2138078249). The maintainers of
   // neostandard have opted to lean into ESLint rather than follow the ethos of a standalone tool.
