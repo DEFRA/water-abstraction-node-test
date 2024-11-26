@@ -24,8 +24,6 @@ So, we brought in [chai](https://www.chaijs.com/api/), which **Hapi code** is bu
 
 The output is similar to **Lab**, and we can see code coverage, though it is a little noisy (see comments below). We can also integrate the code coverage output with SonarCloud.
 
-We've had to call our `test/` folder `specs/` because the ability to configure what is a 'test' is limited in Node v20\*. For example, if the folder was called `test/` it would consider _every_ file in it a test. The same limitation applies to code coverage. The good news is these have been vastly improved in Node v22. So, if we were to upgrade before adopting **node-test** we could rename the folder and improve our code coverage reporting.
-
 Another improvement is the use of `.only`. It is in Node v20*, but you have to add it at all levels for it to be applied. Again, Node v22* brings the feature more in line wih how we would use it in **Lab**.
 
 ## Prerequisites

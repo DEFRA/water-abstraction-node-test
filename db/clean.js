@@ -1,4 +1,4 @@
-import { clean, closeConnection } from '../specs/support/database.js'
+import { clean, closeConnection } from '../test/support/database.js'
 
 if (process.env.NODE_ENV !== 'test') {
   console.error('NODE_ENV is not set to test!')
