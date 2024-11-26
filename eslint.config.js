@@ -30,7 +30,7 @@ export default [
       globals: {
         ...globals.node
       },
-      sourceType: 'commonjs'
+      sourceType: 'module'
     },
     // Ignore the folder created when JSDocs are generated
     ignores: ['docs/**/*'],
