@@ -21,7 +21,7 @@
     "pretest": "NODE_ENV=test node db/clean.js",
     "test": "NODE_ENV=test node --test --experimental-test-coverage",
     "test:skip": "NODE_ENV=test node --test --experimental-test-coverage",
-    "test:lcov": "NODE_ENV=test node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=lcov.info specs"
+    "test:lcov": "NODE_ENV=test node --test --experimental-test-coverage --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=lcov.info"
   },
   "repository": {
     "type": "git",
