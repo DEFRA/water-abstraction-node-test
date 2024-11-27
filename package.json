@@ -21,6 +21,7 @@
     "pretest": "NODE_ENV=test node db/clean.js",
     "test": "NODE_ENV=test node --experimental-test-coverage --test-coverage-exclude 'test/**/*.js' --test-coverage-exclude 'db/migrations/**/*.js' --test-coverage-exclude 'db/seeds/**/*.js' --test '**/*.test.js'",
     "test:skip": "NODE_ENV=test node --experimental-test-coverage --test-coverage-exclude 'test/**/*.js' --test-coverage-exclude 'db/migrations/**/*.js' --test-coverage-exclude 'db/seeds/**/*.js' --test '**/*.test.js'",
+    "test:only": "NODE_ENV=test node --experimental-test-coverage --test-coverage-exclude 'test/**/*.js' --test-coverage-exclude 'db/migrations/**/*.js' --test-coverage-exclude 'db/seeds/**/*.js' --test-only --test '**/*.test.js'",
     "test:lcov": "NODE_ENV=test node --experimental-test-coverage --test-coverage-exclude 'test/**/*.js' --test-coverage-exclude 'db/migrations/**/*.js' --test-coverage-exclude 'db/seeds/**/*.js' --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=lcov.info --test '**/*.test.js'"
   },
   "repository": {
