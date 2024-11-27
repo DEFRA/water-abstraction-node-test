@@ -1,3 +1,5 @@
+'use strict'
+
 const defaults = {
   autorestart: false,
   min_uptime: '3s',
@@ -28,7 +30,7 @@ const defaults = {
     'app/views',
     'app/public',
     'test',
-    '.eslintrc.cjs',
+    'eslint.config.js',
     'lcov.info',
     'Dockerfile',
     'docker-compose.yml',
@@ -41,7 +43,7 @@ const defaults = {
   ]
 }
 
-export default {
+module.exports = {
   apps: [
     {
       name: 'node-test',

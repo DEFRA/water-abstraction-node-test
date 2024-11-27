@@ -31,7 +31,8 @@ export default [
       sourceType: 'module'
     },
     // Ignore the folder created when JSDocs are generated
-    ignores: ['docs/**/*'],
+    // Ignore pm2 config file (pm2 doesn't support ESM config files yet)
+    ignores: ['docs/**/*', 'pm2.config.cjs'],
     plugins: {
       // https://github.com/gajus/eslint-plugin-jsdoc
       jsdoc: jsdocPlugin
