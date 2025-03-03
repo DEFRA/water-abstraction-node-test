@@ -21,6 +21,7 @@
     "pretest": "NODE_ENV=test node db/clean.js",
     "test": "NODE_ENV=test node --experimental-test-coverage --test-coverage-exclude 'test/**/*.js' --test-coverage-exclude 'db/migrations/**/*.js' --test-coverage-exclude 'db/seeds/**/*.js' --test '**/*.test.js'",
     "test:skip": "NODE_ENV=test node --experimental-test-coverage --test-coverage-exclude 'test/**/*.js' --test-coverage-exclude 'db/migrations/**/*.js' --test-coverage-exclude 'db/seeds/**/*.js' --test '**/*.test.js'",
+    "test:only": "NODE_ENV=test node --experimental-test-coverage --test-coverage-exclude 'test/**/*.js' --test-coverage-exclude 'db/migrations/**/*.js' --test-coverage-exclude 'db/seeds/**/*.js' --test-only --test '**/*.test.js'",
     "test:lcov": "NODE_ENV=test node --experimental-test-coverage --test-coverage-exclude 'test/**/*.js' --test-coverage-exclude 'db/migrations/**/*.js' --test-coverage-exclude 'db/seeds/**/*.js' --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=lcov.info --test '**/*.test.js'"
   },
   "repository": {
@@ -36,7 +37,9 @@
     "bcryptjs": "^2.4.3",
     "blipp": "^4.0.2",
     "dotenv": "^16.3.1",
+    "got": "^14.4.5",
     "hapi-pino": "^12.1.0",
+    "hpagent": "^1.2.0",
     "knex": "^2.5.1",
     "objection": "^3.1.1",
     "pg": "^8.11.2",
@@ -49,6 +52,7 @@
     "eslint-plugin-jsdoc": "^50.5.0",
     "eslint-plugin-prettier": "^5.2.1",
     "neostandard": "^0.11.9",
+    "nock": "^13.5.6",
     "pino-pretty": "^10.2.0",
     "prettier": "^3.3.3"
   }
