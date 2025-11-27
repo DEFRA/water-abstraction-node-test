@@ -3,7 +3,7 @@
 [![CI](https://github.com/DEFRA/water-abstraction-node-test/actions/workflows/ci.yml/badge.svg)](https://github.com/DEFRA/water-abstraction-node-test/actions/workflows/ci.yml)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_water-abstraction-node-test&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=DEFRA_water-abstraction-node-test)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=DEFRA_water-abstraction-node-test&metric=coverage)](https://sonarcloud.io/dashboard?id=DEFRA_water-abstraction-node-test)
-[![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/water-abstraction-node-test/badge.svg)](https://snyk.io/test/github/DEFRA/water-abstraction-node-test)
+[![shai-hulud-detect](https://github.com/DEFRA/water-abstraction-node-test/actions/workflows/shai-hulud-detect.yml/badge.svg)](https://github.com/DEFRA/water-abstraction-node-test/actions/workflows/shai-hulud-detect.yml)
 [![Licence](https://img.shields.io/badge/Licence-OGLv3-blue.svg)](http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3)
 
 This is a demonstration / test project to investigate using the [node test runner](https://nodejs.org/api/test.html) by the [water-abstraction-team](https://github.com/DEFRA/water-abstraction-team).
